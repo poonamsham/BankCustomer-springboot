@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity(name = "Bank Customer")
 public class Customer {
@@ -12,7 +16,11 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
+    @NotEmpty(message = "Email cannot be empty")
+    @Email(message = "Email should be valid")
     private String email;
+    @NotEmpty(message = "Phone-Number should be between 10-11 digits long")
+    @Size(min = 10, max = 11)
     private String phoneNumber;
 
     public Customer() {

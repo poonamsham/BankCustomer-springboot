@@ -2,6 +2,7 @@ package com.bank.app.bankCustomerApp.constroller;
 
 import com.bank.app.bankCustomerApp.model.Customer;
 import com.bank.app.bankCustomerApp.service.CustomerService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<String> createCustomer(@Valid @RequestBody Customer customer) {
         return ResponseEntity.ok(customerService.addCustomer(customer));
     }
 
